@@ -3,3 +3,211 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+Una función es un conjunto de declaraciones para realizar una determinada tarea
+R contiene múltiples funciones incorporadas y los usuarios pueden crear propias.
+
+En R una función es un objeto al cual el interprete R puede pasar el control en 
+conjunto con argumentos necesarios para que la función cumpla con sus acciones.
+
+La función en cambio realiza su tarea y retorna el control al interprete así 
+como su resultado, el cual puede ser almacenado en otro objeto.
+
+Definición de función
+```{r}
+function_name <- function(arg_1, arg_2){
+  Function_body
+}
+```
+
+Componentes de la función:
+- Nombre de la función
+- Argumentos
+- Cuerpo de la función
+- Valor de retorno
+
+Funciones Incorporadas en R:
+```{r}
+
+seq(32,44)
+mean(25:82)
+sum(45:68)
+
+```
+Funciones definidas por usuario:
+```{r}
+# Create a function to print squares of numbers in sequence.
+myfunction <- function(a) {
+   for(i in 1:a) {
+      b <- i^2
+      print(b)
+   }
+}
+
+# Call the function myfunction supplying 6 as an argument.
+myfunction1(6)
+```
+
+Podemos crear funciones sin argumentos
+```{r}
+# Create a function without an argument.
+new.function <- function() {
+   for(i in 1:5) {
+      print(i^2)
+   }
+}	
+
+# Call the function without supplying an argument.
+new.function()
+```
+
+Es posible llamar funciones con argumentos por valor, por posición y por nombre.
+```{r}
+# Create a function with arguments.
+new.function <- function(a,b,c) {
+   result <- a * b + c
+   print(result)
+}
+
+# Call the function by position of arguments.
+new.function(5,3,11)
+
+# Call the function by names of the arguments.
+new.function(a = 11, b = 5, c = 3)
+```
+Es posible declarar una función con argumentos por defecto
+```{r}
+# Create a function with arguments.
+new.function <- function(a = 3, b = 6) {
+   result <- a * b
+   print(result)
+}
+
+# Call the function without giving any argument.
+new.function()
+
+# Call the function with giving new values of the argument.
+new.function(9,5)
+```
+
+La evaluación de los argumentos es perezosa, lo que significa que son evaluados
+solo cuando los requiere el cuerpo de la función
+```{r}
+# Create a function with arguments.
+new.function <- function(a, b) {
+   print(a^2)
+   print(a)
+}
+
+# Evaluate the function without supplying one of the arguments.
+new.function(6)
+```
+
+Funciones APPLY en R
+Pertenece al paquete base de R, contiene funciones para manipular porciones de
+datos de matrices, vectores, listas y dataframes en una manera repetitiva.
+Estas funciones permiten cruzar datos en un varias formas y evitar el uso de
+bucles.
+
+Las funciones APPLY forman la base de combinaciones mas complejas y ayudan a
+realizar operaciones con muy pocas lineas de código.
+
+apply(X, MARGIN, FUN, ...)
+Donde:
+  - x         es un arreglo
+  - MARGIN    es una variable que define el margen que se aplicará.
+              Si es 1 aplica a filas, si es 2 aplica a columnas.
+              Usando el constructor c(1,2) aplicara a ambos.
+  - FUN       es la función que queremos aplicar.
+  
+Uso de apply
+```{r}
+# Assing a matrix to a variable
+X<-matrix(rnorm(30), nrow=5, ncol=6)
+
+# Function apply a sum to
+apply(X,2 ,sum)
+```
+
+Lapply
+Diferencias con apply:
+  - Puede ser utilizado en otros objetos como dataframes, listas y vectores.
+  - La salida devuelta es una lista que tiene la misma cantidad de elementos que
+    fueron pasados a la función.
+    
+Uso de lapply
+```{r}
+#create a list of matrices:
+A<-matrix(1:9, 3,3)
+B<-matrix(4:15, 4,3)
+C<-matrix(8:10, 3,2)
+MyList<-list(A,B,C) # display the list
+
+MyList
+
+# extract the second column from the list of matrices, using the selection operator "["
+lapply(MyList,"[", , 2)
+
+# Another example: we now  extract the first row from the list of matrices, using the selection operator "["
+lapply(MyList,"[", 1, )
+
+```
+
+Sapply
+Funciona como lapply, pero trata de simplificar la salida a la estructura de
+datos mas elemental posible.
+
+Uso de Sapply
+```{r}
+MyList
+
+# Lapply would give us a list
+lapply(MyList,"[", 2,1 )
+
+# But sapply returns a vector instead
+sapply(MyList,"[", 2,1 )
+
+# unless we tell simplify=FALSE as parameter to sapply, in which case a list 
+# will be returned:
+sapply(MyList,"[", 2,1, simplify=F)
+
+```
+
+Vapply
+Es generalmente menos conocida, sin embargo, es muy útil cuando sabemos qué tipo
+de datos esperamos al aplicar una función, por lo cual ayuda a evitar errores
+silenciosos.
+
+Uso de Vapply
+```{r}
+# Here, we have a list of numeric vectors and we want to get the max value of 
+# each vector
+test <- list(a = c(1, 3, 5), b = c(2,4,6), c = c(9,8,7))
+
+# we can just use sapply and apply the max function for each vector
+sapply(test, max)
+
+# But what if our list also contains a vector of characters
+test$d <- c("a", "b", "c")
+
+# gives us the max value of each vector, but coerces the final result to a 
+# character vector
+sapply(test, max)
+
+# we can use vapply. In this case, we just need to add an extra parameter that
+# specifies the data type expected
+vapply(test, max, numeric(1))
+
+# if we are expecting a list of data frames
+vapply(frames, nrow, data.frame(1))
+
+# Alternatively, the third parameter is called FUN.VALUE
+vapply(frames, nrow, FUN.VALUE = data.frame(1))
+
+# vapply ahas a simplify argument to choose rather to simplify the result to a 
+# vector or a list
+test$d <- NULL
+
+vapply(test, max, numeric(1), simplify = FALSE)
+
+```
+

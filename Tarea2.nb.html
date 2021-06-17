@@ -215,9 +215,214 @@ pre code {
 
 
 <!-- rnb-text-begin -->
+<p>Una función es un conjunto de declaraciones para realizar una determinada tarea R contiene múltiples funciones incorporadas y los usuarios pueden crear propias.</p>
+<p>En R una función es un objeto al cual el interprete R puede pasar el control en conjunto con argumentos necesarios para que la función cumpla con sus acciones.</p>
+<p>La función en cambio realiza su tarea y retorna el control al interprete así como su resultado, el cual puede ser almacenado en otro objeto.</p>
+<p>Definición de función</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY3Rpb25fbmFtZSA8LSBmdW5jdGlvbihhcmdfMSwgYXJnXzIpe1xuICBGdW5jdGlvbl9ib2R5XG59XG5gYGAifQ== -->
+<pre class="r"><code>function_name &lt;- function(arg_1, arg_2){
+  Function_body
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Componentes de la función: - Nombre de la función - Argumentos - Cuerpo de la función - Valor de retorno</p>
+<p>Funciones Incorporadas en R:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zZXEoMzIsNDQpXG5tZWFuKDI1OjgyKVxuc3VtKDQ1OjY4KVxuXG5gYGAifQ== -->
+<pre class="r"><code>
+seq(32,44)
+mean(25:82)
+sum(45:68)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Funciones definidas por usuario:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBmdW5jdGlvbiB0byBwcmludCBzcXVhcmVzIG9mIG51bWJlcnMgaW4gc2VxdWVuY2UuXG5teWZ1bmN0aW9uIDwtIGZ1bmN0aW9uKGEpIHtcbiAgIGZvcihpIGluIDE6YSkge1xuICAgICAgYiA8LSBpXjJcbiAgICAgIHByaW50KGIpXG4gICB9XG59XG5cbiMgQ2FsbCB0aGUgZnVuY3Rpb24gbXlmdW5jdGlvbiBzdXBwbHlpbmcgNiBhcyBhbiBhcmd1bWVudC5cbm15ZnVuY3Rpb24xKDYpXG5gYGAifQ== -->
+<pre class="r"><code># Create a function to print squares of numbers in sequence.
+myfunction &lt;- function(a) {
+   for(i in 1:a) {
+      b &lt;- i^2
+      print(b)
+   }
+}
+
+# Call the function myfunction supplying 6 as an argument.
+myfunction1(6)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Podemos crear funciones sin argumentos</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBmdW5jdGlvbiB3aXRob3V0IGFuIGFyZ3VtZW50LlxubmV3LmZ1bmN0aW9uIDwtIGZ1bmN0aW9uKCkge1xuICAgZm9yKGkgaW4gMTo1KSB7XG4gICAgICBwcmludChpXjIpXG4gICB9XG59XHRcblxuIyBDYWxsIHRoZSBmdW5jdGlvbiB3aXRob3V0IHN1cHBseWluZyBhbiBhcmd1bWVudC5cbm5ldy5mdW5jdGlvbigpXG5gYGAifQ== -->
+<pre class="r"><code># Create a function without an argument.
+new.function &lt;- function() {
+   for(i in 1:5) {
+      print(i^2)
+   }
+}   
+
+# Call the function without supplying an argument.
+new.function()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Es posible llamar funciones con argumentos por valor, por posición y por nombre.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBmdW5jdGlvbiB3aXRoIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbiA8LSBmdW5jdGlvbihhLGIsYykge1xuICAgcmVzdWx0IDwtIGEgKiBiICsgY1xuICAgcHJpbnQocmVzdWx0KVxufVxuXG4jIENhbGwgdGhlIGZ1bmN0aW9uIGJ5IHBvc2l0aW9uIG9mIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbig1LDMsMTEpXG5cbiMgQ2FsbCB0aGUgZnVuY3Rpb24gYnkgbmFtZXMgb2YgdGhlIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbihhID0gMTEsIGIgPSA1LCBjID0gMylcbmBgYCJ9 -->
+<pre class="r"><code># Create a function with arguments.
+new.function &lt;- function(a,b,c) {
+   result &lt;- a * b + c
+   print(result)
+}
+
+# Call the function by position of arguments.
+new.function(5,3,11)
+
+# Call the function by names of the arguments.
+new.function(a = 11, b = 5, c = 3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Es posible declarar una función con argumentos por defecto</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBmdW5jdGlvbiB3aXRoIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbiA8LSBmdW5jdGlvbihhID0gMywgYiA9IDYpIHtcbiAgIHJlc3VsdCA8LSBhICogYlxuICAgcHJpbnQocmVzdWx0KVxufVxuXG4jIENhbGwgdGhlIGZ1bmN0aW9uIHdpdGhvdXQgZ2l2aW5nIGFueSBhcmd1bWVudC5cbm5ldy5mdW5jdGlvbigpXG5cbiMgQ2FsbCB0aGUgZnVuY3Rpb24gd2l0aCBnaXZpbmcgbmV3IHZhbHVlcyBvZiB0aGUgYXJndW1lbnQuXG5uZXcuZnVuY3Rpb24oOSw1KVxuYGBgIn0= -->
+<pre class="r"><code># Create a function with arguments.
+new.function &lt;- function(a = 3, b = 6) {
+   result &lt;- a * b
+   print(result)
+}
+
+# Call the function without giving any argument.
+new.function()
+
+# Call the function with giving new values of the argument.
+new.function(9,5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>La evaluación de los argumentos es perezosa, lo que significa que son evaluados solo cuando los requiere el cuerpo de la función</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBmdW5jdGlvbiB3aXRoIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbiA8LSBmdW5jdGlvbihhLCBiKSB7XG4gICBwcmludChhXjIpXG4gICBwcmludChhKVxufVxuXG4jIEV2YWx1YXRlIHRoZSBmdW5jdGlvbiB3aXRob3V0IHN1cHBseWluZyBvbmUgb2YgdGhlIGFyZ3VtZW50cy5cbm5ldy5mdW5jdGlvbig2KVxuYGBgIn0= -->
+<pre class="r"><code># Create a function with arguments.
+new.function &lt;- function(a, b) {
+   print(a^2)
+   print(a)
+}
+
+# Evaluate the function without supplying one of the arguments.
+new.function(6)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Funciones APPLY en R Pertenece al paquete base de R, contiene funciones para manipular porciones de datos de matrices, vectores, listas y dataframes en una manera repetitiva. Estas funciones permiten cruzar datos en un varias formas y evitar el uso de bucles.</p>
+<p>Las funciones APPLY forman la base de combinaciones mas complejas y ayudan a realizar operaciones con muy pocas lineas de código.</p>
+<p>apply(X, MARGIN, FUN, …) Donde: - x es un arreglo - MARGIN es una variable que define el margen que se aplicará. Si es 1 aplica a filas, si es 2 aplica a columnas. Usando el constructor c(1,2) aplicara a ambos. - FUN es la función que queremos aplicar.</p>
+<p>Uso de apply</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBc3NpbmcgYSBtYXRyaXggdG8gYSB2YXJpYWJsZVxuWDwtbWF0cml4KHJub3JtKDMwKSwgbnJvdz01LCBuY29sPTYpXG5cbiMgRnVuY3Rpb24gYXBwbHkgYSBzdW0gdG9cbmFwcGx5KFgsMiAsc3VtKVxuYGBgIn0= -->
+<pre class="r"><code># Assing a matrix to a variable
+X&lt;-matrix(rnorm(30), nrow=5, ncol=6)
+
+# Function apply a sum to
+apply(X,2 ,sum)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Lapply Diferencias con apply: - Puede ser utilizado en otros objetos como dataframes, listas y vectores. - La salida devuelta es una lista que tiene la misma cantidad de elementos que fueron pasados a la función.</p>
+<p>Uso de lapply</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NyZWF0ZSBhIGxpc3Qgb2YgbWF0cmljZXM6XG5BPC1tYXRyaXgoMTo5LCAzLDMpXG5CPC1tYXRyaXgoNDoxNSwgNCwzKVxuQzwtbWF0cml4KDg6MTAsIDMsMilcbk15TGlzdDwtbGlzdChBLEIsQykgIyBkaXNwbGF5IHRoZSBsaXN0XG5cbk15TGlzdFxuXG4jIGV4dHJhY3QgdGhlIHNlY29uZCBjb2x1bW4gZnJvbSB0aGUgbGlzdCBvZiBtYXRyaWNlcywgdXNpbmcgdGhlIHNlbGVjdGlvbiBvcGVyYXRvciBcIltcIlxubGFwcGx5KE15TGlzdCxcIltcIiwgLCAyKVxuXG4jIEFub3RoZXIgZXhhbXBsZTogd2Ugbm93ICBleHRyYWN0IHRoZSBmaXJzdCByb3cgZnJvbSB0aGUgbGlzdCBvZiBtYXRyaWNlcywgdXNpbmcgdGhlIHNlbGVjdGlvbiBvcGVyYXRvciBcIltcIlxubGFwcGx5KE15TGlzdCxcIltcIiwgMSwgKVxuXG5gYGAifQ== -->
+<pre class="r"><code>#create a list of matrices:
+A&lt;-matrix(1:9, 3,3)
+B&lt;-matrix(4:15, 4,3)
+C&lt;-matrix(8:10, 3,2)
+MyList&lt;-list(A,B,C) # display the list
+
+MyList
+
+# extract the second column from the list of matrices, using the selection operator &quot;[&quot;
+lapply(MyList,&quot;[&quot;, , 2)
+
+# Another example: we now  extract the first row from the list of matrices, using the selection operator &quot;[&quot;
+lapply(MyList,&quot;[&quot;, 1, )
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Sapply Funciona como lapply, pero trata de simplificar la salida a la estructura de datos mas elemental posible.</p>
+<p>Uso de Sapply</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTXlMaXN0XG5cbiMgTGFwcGx5IHdvdWxkIGdpdmUgdXMgYSBsaXN0XG5sYXBwbHkoTXlMaXN0LFwiW1wiLCAyLDEgKVxuXG4jIEJ1dCBzYXBwbHkgcmV0dXJucyBhIHZlY3RvciBpbnN0ZWFkXG5zYXBwbHkoTXlMaXN0LFwiW1wiLCAyLDEgKVxuXG4jIHVubGVzcyB3ZSB0ZWxsIHNpbXBsaWZ5PUZBTFNFIGFzIHBhcmFtZXRlciB0byBzYXBwbHksIGluIHdoaWNoIGNhc2UgYSBsaXN0IFxuIyB3aWxsIGJlIHJldHVybmVkOlxuc2FwcGx5KE15TGlzdCxcIltcIiwgMiwxLCBzaW1wbGlmeT1GKVxuXG5gYGAifQ== -->
+<pre class="r"><code>MyList
+
+# Lapply would give us a list
+lapply(MyList,&quot;[&quot;, 2,1 )
+
+# But sapply returns a vector instead
+sapply(MyList,&quot;[&quot;, 2,1 )
+
+# unless we tell simplify=FALSE as parameter to sapply, in which case a list 
+# will be returned:
+sapply(MyList,&quot;[&quot;, 2,1, simplify=F)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Vapply Es generalmente menos conocida, sin embargo, es muy útil cuando sabemos qué tipo de datos esperamos al aplicar una función, por lo cual ayuda a evitar errores silenciosos.</p>
+<p>Uso de Vapply</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBIZXJlLCB3ZSBoYXZlIGEgbGlzdCBvZiBudW1lcmljIHZlY3RvcnMgYW5kIHdlIHdhbnQgdG8gZ2V0IHRoZSBtYXggdmFsdWUgb2YgXG4jIGVhY2ggdmVjdG9yXG50ZXN0IDwtIGxpc3QoYSA9IGMoMSwgMywgNSksIGIgPSBjKDIsNCw2KSwgYyA9IGMoOSw4LDcpKVxuXG4jIHdlIGNhbiBqdXN0IHVzZSBzYXBwbHkgYW5kIGFwcGx5IHRoZSBtYXggZnVuY3Rpb24gZm9yIGVhY2ggdmVjdG9yXG5zYXBwbHkodGVzdCwgbWF4KVxuXG4jIEJ1dCB3aGF0IGlmIG91ciBsaXN0IGFsc28gY29udGFpbnMgYSB2ZWN0b3Igb2YgY2hhcmFjdGVyc1xudGVzdCRkIDwtIGMoXCJhXCIsIFwiYlwiLCBcImNcIilcblxuIyBnaXZlcyB1cyB0aGUgbWF4IHZhbHVlIG9mIGVhY2ggdmVjdG9yLCBidXQgY29lcmNlcyB0aGUgZmluYWwgcmVzdWx0IHRvIGEgXG4jIGNoYXJhY3RlciB2ZWN0b3JcbnNhcHBseSh0ZXN0LCBtYXgpXG5cbiMgd2UgY2FuIHVzZSB2YXBwbHkuIEluIHRoaXMgY2FzZSwgd2UganVzdCBuZWVkIHRvIGFkZCBhbiBleHRyYSBwYXJhbWV0ZXIgdGhhdFxuIyBzcGVjaWZpZXMgdGhlIGRhdGEgdHlwZSBleHBlY3RlZFxudmFwcGx5KHRlc3QsIG1heCwgbnVtZXJpYygxKSlcblxuIyBpZiB3ZSBhcmUgZXhwZWN0aW5nIGEgbGlzdCBvZiBkYXRhIGZyYW1lc1xudmFwcGx5KGZyYW1lcywgbnJvdywgZGF0YS5mcmFtZSgxKSlcblxuIyBBbHRlcm5hdGl2ZWx5LCB0aGUgdGhpcmQgcGFyYW1ldGVyIGlzIGNhbGxlZCBGVU4uVkFMVUVcbnZhcHBseShmcmFtZXMsIG5yb3csIEZVTi5WQUxVRSA9IGRhdGEuZnJhbWUoMSkpXG5cbiMgdmFwcGx5IGFoYXMgYSBzaW1wbGlmeSBhcmd1bWVudCB0byBjaG9vc2UgcmF0aGVyIHRvIHNpbXBsaWZ5IHRoZSByZXN1bHQgdG8gYSBcbiMgdmVjdG9yIG9yIGEgbGlzdFxudGVzdCRkIDwtIE5VTExcblxudmFwcGx5KHRlc3QsIG1heCwgbnVtZXJpYygxKSwgc2ltcGxpZnkgPSBGQUxTRSlcblxuYGBgIn0= -->
+<pre class="r"><code># Here, we have a list of numeric vectors and we want to get the max value of 
+# each vector
+test &lt;- list(a = c(1, 3, 5), b = c(2,4,6), c = c(9,8,7))
+
+# we can just use sapply and apply the max function for each vector
+sapply(test, max)
+
+# But what if our list also contains a vector of characters
+test$d &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+
+# gives us the max value of each vector, but coerces the final result to a 
+# character vector
+sapply(test, max)
+
+# we can use vapply. In this case, we just need to add an extra parameter that
+# specifies the data type expected
+vapply(test, max, numeric(1))
+
+# if we are expecting a list of data frames
+vapply(frames, nrow, data.frame(1))
+
+# Alternatively, the third parameter is called FUN.VALUE
+vapply(frames, nrow, FUN.VALUE = data.frame(1))
+
+# vapply ahas a simplify argument to choose rather to simplify the result to a 
+# vector or a list
+test$d &lt;- NULL
+
+vapply(test, max, numeric(1), simplify = FALSE)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpVbmEgZnVuY2nDs24gZXMgdW4gY29uanVudG8gZGUgZGVjbGFyYWNpb25lcyBwYXJhIHJlYWxpemFyIHVuYSBkZXRlcm1pbmFkYSB0YXJlYQ0KUiBjb250aWVuZSBtw7psdGlwbGVzIGZ1bmNpb25lcyBpbmNvcnBvcmFkYXMgeSBsb3MgdXN1YXJpb3MgcHVlZGVuIGNyZWFyIHByb3BpYXMuDQoNCkVuIFIgdW5hIGZ1bmNpw7NuIGVzIHVuIG9iamV0byBhbCBjdWFsIGVsIGludGVycHJldGUgUiBwdWVkZSBwYXNhciBlbCBjb250cm9sIGVuIA0KY29uanVudG8gY29uIGFyZ3VtZW50b3MgbmVjZXNhcmlvcyBwYXJhIHF1ZSBsYSBmdW5jacOzbiBjdW1wbGEgY29uIHN1cyBhY2Npb25lcy4NCg0KTGEgZnVuY2nDs24gZW4gY2FtYmlvIHJlYWxpemEgc3UgdGFyZWEgeSByZXRvcm5hIGVsIGNvbnRyb2wgYWwgaW50ZXJwcmV0ZSBhc8OtIA0KY29tbyBzdSByZXN1bHRhZG8sIGVsIGN1YWwgcHVlZGUgc2VyIGFsbWFjZW5hZG8gZW4gb3RybyBvYmpldG8uDQoNCkRlZmluaWNpw7NuIGRlIGZ1bmNpw7NuDQpgYGB7cn0NCmZ1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oYXJnXzEsIGFyZ18yKXsNCiAgRnVuY3Rpb25fYm9keQ0KfQ0KYGBgDQoNCkNvbXBvbmVudGVzIGRlIGxhIGZ1bmNpw7NuOg0KLSBOb21icmUgZGUgbGEgZnVuY2nDs24NCi0gQXJndW1lbnRvcw0KLSBDdWVycG8gZGUgbGEgZnVuY2nDs24NCi0gVmFsb3IgZGUgcmV0b3Jubw0KDQpGdW5jaW9uZXMgSW5jb3Jwb3JhZGFzIGVuIFI6DQpgYGB7cn0NCg0Kc2VxKDMyLDQ0KQ0KbWVhbigyNTo4MikNCnN1bSg0NTo2OCkNCg0KYGBgDQpGdW5jaW9uZXMgZGVmaW5pZGFzIHBvciB1c3VhcmlvOg0KYGBge3J9DQojIENyZWF0ZSBhIGZ1bmN0aW9uIHRvIHByaW50IHNxdWFyZXMgb2YgbnVtYmVycyBpbiBzZXF1ZW5jZS4NCm15ZnVuY3Rpb24gPC0gZnVuY3Rpb24oYSkgew0KICAgZm9yKGkgaW4gMTphKSB7DQogICAgICBiIDwtIGleMg0KICAgICAgcHJpbnQoYikNCiAgIH0NCn0NCg0KIyBDYWxsIHRoZSBmdW5jdGlvbiBteWZ1bmN0aW9uIHN1cHBseWluZyA2IGFzIGFuIGFyZ3VtZW50Lg0KbXlmdW5jdGlvbjEoNikNCmBgYA0KDQpQb2RlbW9zIGNyZWFyIGZ1bmNpb25lcyBzaW4gYXJndW1lbnRvcw0KYGBge3J9DQojIENyZWF0ZSBhIGZ1bmN0aW9uIHdpdGhvdXQgYW4gYXJndW1lbnQuDQpuZXcuZnVuY3Rpb24gPC0gZnVuY3Rpb24oKSB7DQogICBmb3IoaSBpbiAxOjUpIHsNCiAgICAgIHByaW50KGleMikNCiAgIH0NCn0JDQoNCiMgQ2FsbCB0aGUgZnVuY3Rpb24gd2l0aG91dCBzdXBwbHlpbmcgYW4gYXJndW1lbnQuDQpuZXcuZnVuY3Rpb24oKQ0KYGBgDQoNCkVzIHBvc2libGUgbGxhbWFyIGZ1bmNpb25lcyBjb24gYXJndW1lbnRvcyBwb3IgdmFsb3IsIHBvciBwb3NpY2nDs24geSBwb3Igbm9tYnJlLg0KYGBge3J9DQojIENyZWF0ZSBhIGZ1bmN0aW9uIHdpdGggYXJndW1lbnRzLg0KbmV3LmZ1bmN0aW9uIDwtIGZ1bmN0aW9uKGEsYixjKSB7DQogICByZXN1bHQgPC0gYSAqIGIgKyBjDQogICBwcmludChyZXN1bHQpDQp9DQoNCiMgQ2FsbCB0aGUgZnVuY3Rpb24gYnkgcG9zaXRpb24gb2YgYXJndW1lbnRzLg0KbmV3LmZ1bmN0aW9uKDUsMywxMSkNCg0KIyBDYWxsIHRoZSBmdW5jdGlvbiBieSBuYW1lcyBvZiB0aGUgYXJndW1lbnRzLg0KbmV3LmZ1bmN0aW9uKGEgPSAxMSwgYiA9IDUsIGMgPSAzKQ0KYGBgDQpFcyBwb3NpYmxlIGRlY2xhcmFyIHVuYSBmdW5jacOzbiBjb24gYXJndW1lbnRvcyBwb3IgZGVmZWN0bw0KYGBge3J9DQojIENyZWF0ZSBhIGZ1bmN0aW9uIHdpdGggYXJndW1lbnRzLg0KbmV3LmZ1bmN0aW9uIDwtIGZ1bmN0aW9uKGEgPSAzLCBiID0gNikgew0KICAgcmVzdWx0IDwtIGEgKiBiDQogICBwcmludChyZXN1bHQpDQp9DQoNCiMgQ2FsbCB0aGUgZnVuY3Rpb24gd2l0aG91dCBnaXZpbmcgYW55IGFyZ3VtZW50Lg0KbmV3LmZ1bmN0aW9uKCkNCg0KIyBDYWxsIHRoZSBmdW5jdGlvbiB3aXRoIGdpdmluZyBuZXcgdmFsdWVzIG9mIHRoZSBhcmd1bWVudC4NCm5ldy5mdW5jdGlvbig5LDUpDQpgYGANCg0KTGEgZXZhbHVhY2nDs24gZGUgbG9zIGFyZ3VtZW50b3MgZXMgcGVyZXpvc2EsIGxvIHF1ZSBzaWduaWZpY2EgcXVlIHNvbiBldmFsdWFkb3MNCnNvbG8gY3VhbmRvIGxvcyByZXF1aWVyZSBlbCBjdWVycG8gZGUgbGEgZnVuY2nDs24NCmBgYHtyfQ0KIyBDcmVhdGUgYSBmdW5jdGlvbiB3aXRoIGFyZ3VtZW50cy4NCm5ldy5mdW5jdGlvbiA8LSBmdW5jdGlvbihhLCBiKSB7DQogICBwcmludChhXjIpDQogICBwcmludChhKQ0KfQ0KDQojIEV2YWx1YXRlIHRoZSBmdW5jdGlvbiB3aXRob3V0IHN1cHBseWluZyBvbmUgb2YgdGhlIGFyZ3VtZW50cy4NCm5ldy5mdW5jdGlvbig2KQ0KYGBgDQoNCkZ1bmNpb25lcyBBUFBMWSBlbiBSDQpQZXJ0ZW5lY2UgYWwgcGFxdWV0ZSBiYXNlIGRlIFIsIGNvbnRpZW5lIGZ1bmNpb25lcyBwYXJhIG1hbmlwdWxhciBwb3JjaW9uZXMgZGUNCmRhdG9zIGRlIG1hdHJpY2VzLCB2ZWN0b3JlcywgbGlzdGFzIHkgZGF0YWZyYW1lcyBlbiB1bmEgbWFuZXJhIHJlcGV0aXRpdmEuDQpFc3RhcyBmdW5jaW9uZXMgcGVybWl0ZW4gY3J1emFyIGRhdG9zIGVuIHVuIHZhcmlhcyBmb3JtYXMgeSBldml0YXIgZWwgdXNvIGRlDQpidWNsZXMuDQoNCkxhcyBmdW5jaW9uZXMgQVBQTFkgZm9ybWFuIGxhIGJhc2UgZGUgY29tYmluYWNpb25lcyBtYXMgY29tcGxlamFzIHkgYXl1ZGFuIGENCnJlYWxpemFyIG9wZXJhY2lvbmVzIGNvbiBtdXkgcG9jYXMgbGluZWFzIGRlIGPDs2RpZ28uDQoNCmFwcGx5KFgsIE1BUkdJTiwgRlVOLCAuLi4pDQpEb25kZToNCiAgLSB4ICAgICAgICAgZXMgdW4gYXJyZWdsbw0KICAtIE1BUkdJTiAgICBlcyB1bmEgdmFyaWFibGUgcXVlIGRlZmluZSBlbCBtYXJnZW4gcXVlIHNlIGFwbGljYXLDoS4NCiAgICAgICAgICAgICAgU2kgZXMgMSBhcGxpY2EgYSBmaWxhcywgc2kgZXMgMiBhcGxpY2EgYSBjb2x1bW5hcy4NCiAgICAgICAgICAgICAgVXNhbmRvIGVsIGNvbnN0cnVjdG9yIGMoMSwyKSBhcGxpY2FyYSBhIGFtYm9zLg0KICAtIEZVTiAgICAgICBlcyBsYSBmdW5jacOzbiBxdWUgcXVlcmVtb3MgYXBsaWNhci4NCiAgDQpVc28gZGUgYXBwbHkNCmBgYHtyfQ0KIyBBc3NpbmcgYSBtYXRyaXggdG8gYSB2YXJpYWJsZQ0KWDwtbWF0cml4KHJub3JtKDMwKSwgbnJvdz01LCBuY29sPTYpDQoNCiMgRnVuY3Rpb24gYXBwbHkgYSBzdW0gdG8NCmFwcGx5KFgsMiAsc3VtKQ0KYGBgDQoNCkxhcHBseQ0KRGlmZXJlbmNpYXMgY29uIGFwcGx5Og0KICAtIFB1ZWRlIHNlciB1dGlsaXphZG8gZW4gb3Ryb3Mgb2JqZXRvcyBjb21vIGRhdGFmcmFtZXMsIGxpc3RhcyB5IHZlY3RvcmVzLg0KICAtIExhIHNhbGlkYSBkZXZ1ZWx0YSBlcyB1bmEgbGlzdGEgcXVlIHRpZW5lIGxhIG1pc21hIGNhbnRpZGFkIGRlIGVsZW1lbnRvcyBxdWUNCiAgICBmdWVyb24gcGFzYWRvcyBhIGxhIGZ1bmNpw7NuLg0KICAgIA0KVXNvIGRlIGxhcHBseQ0KYGBge3J9DQojY3JlYXRlIGEgbGlzdCBvZiBtYXRyaWNlczoNCkE8LW1hdHJpeCgxOjksIDMsMykNCkI8LW1hdHJpeCg0OjE1LCA0LDMpDQpDPC1tYXRyaXgoODoxMCwgMywyKQ0KTXlMaXN0PC1saXN0KEEsQixDKSAjIGRpc3BsYXkgdGhlIGxpc3QNCg0KTXlMaXN0DQoNCiMgZXh0cmFjdCB0aGUgc2Vjb25kIGNvbHVtbiBmcm9tIHRoZSBsaXN0IG9mIG1hdHJpY2VzLCB1c2luZyB0aGUgc2VsZWN0aW9uIG9wZXJhdG9yICJbIg0KbGFwcGx5KE15TGlzdCwiWyIsICwgMikNCg0KIyBBbm90aGVyIGV4YW1wbGU6IHdlIG5vdyAgZXh0cmFjdCB0aGUgZmlyc3Qgcm93IGZyb20gdGhlIGxpc3Qgb2YgbWF0cmljZXMsIHVzaW5nIHRoZSBzZWxlY3Rpb24gb3BlcmF0b3IgIlsiDQpsYXBwbHkoTXlMaXN0LCJbIiwgMSwgKQ0KDQpgYGANCg0KU2FwcGx5DQpGdW5jaW9uYSBjb21vIGxhcHBseSwgcGVybyB0cmF0YSBkZSBzaW1wbGlmaWNhciBsYSBzYWxpZGEgYSBsYSBlc3RydWN0dXJhIGRlDQpkYXRvcyBtYXMgZWxlbWVudGFsIHBvc2libGUuDQoNClVzbyBkZSBTYXBwbHkNCmBgYHtyfQ0KTXlMaXN0DQoNCiMgTGFwcGx5IHdvdWxkIGdpdmUgdXMgYSBsaXN0DQpsYXBwbHkoTXlMaXN0LCJbIiwgMiwxICkNCg0KIyBCdXQgc2FwcGx5IHJldHVybnMgYSB2ZWN0b3IgaW5zdGVhZA0Kc2FwcGx5KE15TGlzdCwiWyIsIDIsMSApDQoNCiMgdW5sZXNzIHdlIHRlbGwgc2ltcGxpZnk9RkFMU0UgYXMgcGFyYW1ldGVyIHRvIHNhcHBseSwgaW4gd2hpY2ggY2FzZSBhIGxpc3QgDQojIHdpbGwgYmUgcmV0dXJuZWQ6DQpzYXBwbHkoTXlMaXN0LCJbIiwgMiwxLCBzaW1wbGlmeT1GKQ0KDQpgYGANCg0KVmFwcGx5DQpFcyBnZW5lcmFsbWVudGUgbWVub3MgY29ub2NpZGEsIHNpbiBlbWJhcmdvLCBlcyBtdXkgw7p0aWwgY3VhbmRvIHNhYmVtb3MgcXXDqSB0aXBvDQpkZSBkYXRvcyBlc3BlcmFtb3MgYWwgYXBsaWNhciB1bmEgZnVuY2nDs24sIHBvciBsbyBjdWFsIGF5dWRhIGEgZXZpdGFyIGVycm9yZXMNCnNpbGVuY2lvc29zLg0KDQpVc28gZGUgVmFwcGx5DQpgYGB7cn0NCiMgSGVyZSwgd2UgaGF2ZSBhIGxpc3Qgb2YgbnVtZXJpYyB2ZWN0b3JzIGFuZCB3ZSB3YW50IHRvIGdldCB0aGUgbWF4IHZhbHVlIG9mIA0KIyBlYWNoIHZlY3Rvcg0KdGVzdCA8LSBsaXN0KGEgPSBjKDEsIDMsIDUpLCBiID0gYygyLDQsNiksIGMgPSBjKDksOCw3KSkNCg0KIyB3ZSBjYW4ganVzdCB1c2Ugc2FwcGx5IGFuZCBhcHBseSB0aGUgbWF4IGZ1bmN0aW9uIGZvciBlYWNoIHZlY3Rvcg0Kc2FwcGx5KHRlc3QsIG1heCkNCg0KIyBCdXQgd2hhdCBpZiBvdXIgbGlzdCBhbHNvIGNvbnRhaW5zIGEgdmVjdG9yIG9mIGNoYXJhY3RlcnMNCnRlc3QkZCA8LSBjKCJhIiwgImIiLCAiYyIpDQoNCiMgZ2l2ZXMgdXMgdGhlIG1heCB2YWx1ZSBvZiBlYWNoIHZlY3RvciwgYnV0IGNvZXJjZXMgdGhlIGZpbmFsIHJlc3VsdCB0byBhIA0KIyBjaGFyYWN0ZXIgdmVjdG9yDQpzYXBwbHkodGVzdCwgbWF4KQ0KDQojIHdlIGNhbiB1c2UgdmFwcGx5LiBJbiB0aGlzIGNhc2UsIHdlIGp1c3QgbmVlZCB0byBhZGQgYW4gZXh0cmEgcGFyYW1ldGVyIHRoYXQNCiMgc3BlY2lmaWVzIHRoZSBkYXRhIHR5cGUgZXhwZWN0ZWQNCnZhcHBseSh0ZXN0LCBtYXgsIG51bWVyaWMoMSkpDQoNCiMgaWYgd2UgYXJlIGV4cGVjdGluZyBhIGxpc3Qgb2YgZGF0YSBmcmFtZXMNCnZhcHBseShmcmFtZXMsIG5yb3csIGRhdGEuZnJhbWUoMSkpDQoNCiMgQWx0ZXJuYXRpdmVseSwgdGhlIHRoaXJkIHBhcmFtZXRlciBpcyBjYWxsZWQgRlVOLlZBTFVFDQp2YXBwbHkoZnJhbWVzLCBucm93LCBGVU4uVkFMVUUgPSBkYXRhLmZyYW1lKDEpKQ0KDQojIHZhcHBseSBhaGFzIGEgc2ltcGxpZnkgYXJndW1lbnQgdG8gY2hvb3NlIHJhdGhlciB0byBzaW1wbGlmeSB0aGUgcmVzdWx0IHRvIGEgDQojIHZlY3RvciBvciBhIGxpc3QNCnRlc3QkZCA8LSBOVUxMDQoNCnZhcHBseSh0ZXN0LCBtYXgsIG51bWVyaWMoMSksIHNpbXBsaWZ5ID0gRkFMU0UpDQoNCmBgYA0KDQo=</div>
 
 
 
